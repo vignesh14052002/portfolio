@@ -1,32 +1,35 @@
-
+import {useState} from "react"
 import logo from './logo.svg';
 import './App.css';
-
+import About from "./components/About"
+import Projects from "./components/Projects"
 function App() {
+  const [page,setPage]=useState("home");
+  const [mobilemenu,setMobilemenu]=useState(false);
   return (
     <div className="App">
-      <div class="header">
-      <div class="logo">
-        <div class="firstletter">V</div>
-        <div class="remaining">icky</div>
+      <div className="header">
+      <div className="logo">
+        <div className="firstletter">V</div>
+        <div className="remaining">icky</div>
       </div>
-      <a href="#" class="mobilemenu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+      <a href="#" className="mobilemenu" onClick={()=>setMobilemenu((pre)=>!pre)}>
+        <span className="bar"></span>
+        <span className="bar"></span>
+        <span className="bar"></span>
       </a>
-      <div class="sections"  active="false">
-        <div>Home</div>
-        <div>Blog</div>
-        <div>Gallery</div>
-        <div>About</div>
+      <div className="sections"  active={mobilemenu?"true":"false"}>
+        <div onClick={()=>setPage("home")}>Home</div>
+        <div onClick={()=>setPage("projects")}>Projects</div>
+        <div onClick={()=>setPage("gallery")}>Gallery</div>
+        <div onClick={()=>setPage("about")}>About</div>
         
-      <a href="https://vignesh14052002.github.io/p5js-projects/empty-example/bubbles/index.html">Projects</a>
+
  
       </div>
-      
     </div>
-
+    {page=="projects"&&<Projects />}
+    {page=="about"&&<About />}
     </div>
   );
 }

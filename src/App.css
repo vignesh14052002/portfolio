@@ -2,8 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
+  color:white;
 }
+
 html{
   overflow-x: hidden;
 }
@@ -11,14 +12,6 @@ body{
   background-color: black;
   overflow-x: hidden;
   height: 100vh;
-}
-.background{
-  position: absolute;
-  top:0px;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1;
-  overflow-x: hidden;
 }
 
 .header{
@@ -28,6 +21,7 @@ body{
   height: 10vh;
   display: flex;
   z-index: 2;
+  
 }
 
 .logo{
@@ -86,14 +80,7 @@ body{
   transform: scaleX(1);
   letter-spacing: 0.2em;
 }
-svg{
-  position: absolute;
-  top:0px;
-  left: 0px;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1;
-}
+
 .mobilemenu{
   position: absolute;
   display: none;
@@ -114,9 +101,6 @@ svg{
 
 @media only screen and (max-width: 768px) {
   
-  svg g path{
-      transform: scale(0.5,0.5) translateY(200px);
-  }
   .mobilemenu{
       display: flex;
   }
