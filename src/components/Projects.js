@@ -27,6 +27,10 @@ export default function Project() {
 
 return (
     <>
+    <div className="center">
+    <a href="https://github.com/vignesh14052002/p5js-projects">Github Repo</a>
+    <h2>p5js projects</h2>
+    </div>
     <div id="Project">
         
         {projectdata.length==0?<div className="Loading"><h1>Loading....</h1></div>:
@@ -42,7 +46,7 @@ return (
     })}
     </div>
     <div className="pagination">
-        {[...Array(parseInt(projectdata.length/2))].map((x,i)=><div id={i} onClick={()=>setStartat(i)}>{i+1}</div>)}
+        {[...Array(parseInt(projectdata.length/2))].map((x,i)=><div id={i} onClick={()=>setStartat(i*2)}>{i}</div>)}
     </div>
     
 </>

@@ -2,14 +2,34 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color:white;
 }
-
+.togglebtn{
+  position: absolute;
+  top:10px;
+  right:10px;
+  z-index: 5;
+  width: 50px;
+  height: 30px;
+  border-radius: 30px;
+  background-color: #ffffff;
+}
+.togglebtn::after{
+  content: "he";
+  background-color: green;
+  color: blue;
+  width: 10px;
+  height: 20px;
+  z-index: 6;
+}
 html{
   overflow-x: hidden;
 }
 body{
-  background-color: black;
+  --text-color:#ffffff;
+  --background-color:#000000;
+  --hover-color:#ffff00;
+  color:var(--text-color);
+  background-color: var(--background-color);
   overflow-x: hidden;
   height: 100vh;
 }
@@ -28,7 +48,6 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
   user-select: none;
   width: 40%;
   font-family: 'Brush Script MT', cursive;
@@ -43,7 +62,7 @@ body{
 
 }
 .logo:hover{
-  color: yellow;
+  color: var(--hover-color);
   cursor: pointer;
 }
 .sections{
@@ -55,12 +74,11 @@ body{
 .sections div{
   display: inline-block;
   position: relative;
-  color: white;
   user-select: none;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  width: 10%;
+  width: 5em;
   text-align: center;
-  transition: 0.5s;
+  transition:  0.5s;
 }
 .sections div:after{
   content: "";
@@ -71,18 +89,20 @@ body{
   bottom:-5px;
   transform-origin: center;
   transform: scaleX(0);
-  background-color: yellow;
+  background-color: var(--hover-color);
   transition: 0.2s;
 }
 .sections div:hover:after,.sections div:hover{
   cursor: pointer;
-  color: yellow;
+  color: var(--hover-color);
   transform: scaleX(1);
   letter-spacing: 0.2em;
+
 }
 
 .mobilemenu{
   position: absolute;
+  
   display: none;
   flex-direction: column;
   justify-content: space-between;
@@ -93,11 +113,47 @@ body{
   z-index: 2;
 }
 .mobilemenu .bar{
-  background-color: white;
+  background-color: var(--text-color);
   width: 100%;
   height:2px;
   border-radius: 10px;
 }
+@keyframes blink {
+  0%,6%,100% {transform: scaleY(1.0);}
+  3% {transform: scaleY(0.1);}
+}
+@keyframes bleye {
+  0%,6%,100% {transform: translateY(0px);}
+  3% {transform: translateY(15px) ; }
+}
+svg .eye{
+  transform-origin: center;
+  transform-box: fill-box;
+  transform: scaleY(1.1);
+  animation: blink 5s infinite;
+}
+svg g{
+  fill:var(--text-color);
+}
+.eyeball{
+  fill: var(--background-color);
+  transform-origin: center;
+  transform-box: fill-box;
+  transform: translateY(0px);
+  animation: bleye 5s infinite ;
+}
+
+.face{
+  position: relative;
+    width: 100vw;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    top: 5em;
+}
+/* .face:hover{
+  filter: drop-shadow(0 0 1px var(--hover-color))
+} */
 
 @media only screen and (max-width: 768px) {
   
@@ -116,10 +172,10 @@ body{
       right: 0px;
       background-color: hsla(0,0%,53%,0.5);
       backdrop-filter: blur(1rem);
-      transition: 0.5s;}
+      transition: 0.5s transform;}
   .sections[active="true"]{
       transform: translate(0%,-50px);
-      transition: 0.5s;
+      transition: 0.5s transform;
   }
   .logo{
       width: 60vw;
