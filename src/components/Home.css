@@ -1,0 +1,112 @@
+@keyframes blink {
+    0%,6%,100% {transform: scaleY(1.0);}
+    3% {transform: scaleY(0.1);}
+  }
+  @keyframes bleye {
+    0%,6%,100% {transform: translateY(0px);}
+    3% {transform: translateY(15px) ; }
+  }
+  svg .eye{
+    transform-origin: center;
+    transform-box: fill-box;
+    transform: scaleY(1.1);
+    animation: blink 5s infinite;
+  }
+  svg g{
+    fill:#000000;
+  }
+  .eyeball{
+    fill: #ffffff;
+    transform-origin: center;
+    transform-box: fill-box;
+    transform: translateY(0px);
+    animation: bleye 5s infinite ;
+  }
+  
+  .face{
+    position: relative;
+      width: 50%;
+      
+  }
+  .bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0px 0px 30px #FFF);
+  }
+  .eyes{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+  .facebg{
+    fill: #ffffff;
+    transform-origin: center;
+    transform-box: fill-box;
+    transform: scale(10);
+    /* filter: drop-shadow(-1px 80px 100px #FAFAFA); */
+  
+  }
+  
+main{
+    position: relative;
+    top: 5em;
+    display: flex;
+    width: 100vw;
+    
+    height: 70vh;
+}
+main .connector{
+    position: absolute;
+    width: 10vw;
+    height: 10vw;
+}
+.connector:nth-child(1){
+    top:22%;
+    left: 25%;
+}
+.connector:nth-child(2){
+    top:22%;
+    right: 25%;
+    transform: scaleY(-1);
+}
+.connector:nth-child(3){
+    bottom:22%;
+    left: 25%;
+    transform: scaleY(-1);
+}
+.connector:nth-child(4){
+    bottom:22%;
+    right: 25%;
+}
+main .connector path{
+    fill: var(--text-color);
+}
+.side{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.side h2{
+    margin: auto;
+    padding: 10px;
+    width: 20vw;
+    height: 60px;
+    font-size: 2em;
+    text-align: center;
+    border: 2px solid var(--text-color);
+    border-radius: 15px;
+    font-family: "Cookie";
+}
+
+@media only screen and (max-width: 768px) {
+    .side h2{
+        font-size: 1.2em;
+    }
+    main .connector{
+        position: absolute;
+        width: 12vw;
+        height: 20vw;
+    }
+}

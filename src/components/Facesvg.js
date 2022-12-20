@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import {ReactComponent as Face} from './face.svg';
 export default function Facesvg() {
     const eyescale=20;
     const [EyePosition, setEyePosition] = useState({
@@ -29,9 +29,12 @@ export default function Facesvg() {
         overflow:"hidden",
         zIndex:"10"}} onMouseMove={(ev)=> handleMouseMove(ev)}></div>
          */}
-<svg onMouseMove={(ev)=> handleMouseMove(ev)} className="face" version="1.0" xmlns="http://www.w3.org/2000/svg"
+<div className='face'>
+ <Face />        
+<svg onMouseMove={(ev)=> handleMouseMove(ev)} className="eyes" version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="1300.000000pt" height="1300.000000pt" viewBox="0 0 1300.000000 1300.000000"
  preserveAspectRatio="xMidYMid meet" >
+{/* <circle cx='650' cy='743' r='50' className='facebg'/>
 
 <g transform="translate(0.000000,1300.000000) scale(0.100000,-0.100000)"
 fill="#000000" stroke="none">
@@ -162,11 +165,11 @@ c49 12 52 76 5 91 -12 4 -17 11 -13 15 12 11 262 82 274 78 6 -2 -14 -41 -43
 -24 45 -23 83 -39 86 -36 8 8 -16 124 -33 160 l-15 31 -49 -46 c-53 -52 -81
 -63 -275 -103 -466 -97 -909 -113 -1385 -50 -149 19 -373 59 -478 84 -84 20
 -161 62 -185 101 -17 27 -26 24 -42 -13z"/>
-</g>
+</g> */}
 <circle cx={501-EyePosition.ex*eyescale} cy={743-EyePosition.ey*eyescale} r="10"  className="eyeball" /> 
 <circle cx={801-EyePosition.ex*eyescale} cy={743-EyePosition.ey*eyescale} r="10"  className="eyeball" /> 
-
 </svg>
+</div>
 </>
     )
 }
