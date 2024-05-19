@@ -28,6 +28,7 @@ export default function Project() {
 return (
     <>
     <div className="center">
+    <p>(These projects are directly rendered via github api)</p>
     <a href="https://github.com/vignesh14052002/p5js-projects">Github Repo</a>
     <h2>p5js projects</h2>
     </div>

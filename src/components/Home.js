@@ -9,7 +9,7 @@ export default function Home() {
     const skills=[[["FrontEnd",80],["BackEnd",30],["Database",40]],
     [["Prompting",30],["Retrieval Augumented Generation",80]],
     [["Canvas Games",80],["Unity",30]],
-    [["2D Animation",80],["3D Animation",30]]
+    [["2D Animation",30],["3D Animation",80]]
 ];
 return (
     <>
