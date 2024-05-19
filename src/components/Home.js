@@ -1,4 +1,4 @@
-import {ReactComponent as Connector} from './connector.svg';
+import {ReactComponent as Connector} from '../images/connector.svg';
 import {useState} from "react"
 import React from 'react';
 import "./Home.css"

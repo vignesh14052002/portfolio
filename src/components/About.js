@@ -8,7 +8,7 @@ return (
     <h5>Web/App/Game Developer </h5>
     <p>Interested in Web/App/Game Development , Machine Learning , Graphics , Animation</p>
     <h2>Credits</h2>
-    <p>Home page cartoon - <a href="ID 151117895 © Jemastock | Dreamstime.com">Jemastock Dreamstime</a></p>
+    <p>Home page cartoon - <a href="https://www.dreamstime.com/indian-boy-face-avatar-cartoon-black-white-indian-young-boy-face-glasses-profile-picture-avatar-cartoon-character-image151117895">Jemastock Dreamstime</a></p>
     </div>
 )
 }

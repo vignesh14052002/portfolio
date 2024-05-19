@@ -8,6 +8,12 @@ import Projects from "./components/Projects"
 import Home from "./components/Home";
 import P5logo from "./components/p5logo";
 
+const StyledLink = ({ children, ...props }) => (
+  <Link {...props}  className={props.className+" styled-link"}>
+    {children}
+  </Link>
+);
+
 function App() {
   const [theme,setTheme]=useState("light");
   const [mobilemenu,setMobilemenu]=useState(false);
@@ -35,10 +41,10 @@ function App() {
 </label>
       <div className="header">
       
-      <Link to="/logo" className="logo">
+      <StyledLink to="/logo" className="logo">
         <div className="firstletter">V</div>
         <div className="remaining">icky</div>
-        </Link>
+      </StyledLink>
       
       <button className="mobilemenu" onClick={()=>setMobilemenu((pre)=>!pre)}>
         <span className="bar"></span>
@@ -46,10 +52,10 @@ function App() {
         <span className="bar"></span>
       </button>
       <div className="sections"  active={mobilemenu?"true":"false"}>
-        <div><Link to="/">Home</Link></div>
-        <div><Link to="/projects">Projects</Link></div>
-        <div><Link to="/contact">Contact</Link></div>
-        <div><Link to="/about">About</Link></div>
+        <div><StyledLink to="/">Home</StyledLink></div>
+        <div><StyledLink to="/projects">Projects</StyledLink></div>
+        <div><StyledLink to="/contact">Contact</StyledLink></div>
+        <div><StyledLink to="/about">About</StyledLink></div>
         
 
  
