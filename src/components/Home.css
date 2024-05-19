@@ -24,20 +24,19 @@
   }
   
   .face{
-    position: relative;
-      width: 50%;
+     width: 50%;
       
   }
   .bg{
-    position: absolute;
-    width: 100%;
-    height: 100%;
     filter: drop-shadow(0px 0px 30px #FFF);
   }
-  .eyes{
+  .bg,.eyes{
     width: 100%;
     height: 100%;
     position: absolute;
+    transform-origin: center;
+    transform: scale(0.8);
+  
   }
   .facebg{
     fill: #ffffff;
@@ -60,25 +59,62 @@ main .connector{
     position: absolute;
     width: 10vw;
     height: 10vw;
+    transition: 0.5s;
+    z-index: -2;
 }
-.connector:nth-child(1){
+.connector:nth-child(1),main h2:nth-child(2){
     top:22%;
     left: 25%;
 }
-.connector:nth-child(2){
+main h2:nth-child(2),main h2:nth-child(6)
+{
+  transform: translateX(-100%);
+}
+main h2:nth-child(4),main h2:nth-child(8){
+  transform: translateX(100%);
+}
+
+.connector:nth-child(3),main h2:nth-child(4){
     top:22%;
     right: 25%;
-    transform: scaleY(-1);
 }
-.connector:nth-child(3){
+.connector:nth-child(3),.connector:nth-child(5){
+transform-origin: center;
+  transform: scaleY(-1);
+}
+.connector:nth-child(5),main h2:nth-child(6){
     bottom:22%;
     left: 25%;
-    transform: scaleY(-1);
 }
-.connector:nth-child(4){
+
+.connector:nth-child(7),main h2:nth-child(8){
     bottom:22%;
     right: 25%;
 }
+/* .selected on desktop */
+@media only screen and (min-width: 768px) {
+
+.selected .connector:nth-child(7),.selected h2:nth-child(8){
+  bottom:36%;
+  left: 25%;
+} 
+.selected .connector:nth-child(3),.selected h2:nth-child(4){
+  top:36%;
+  left: 25%;
+} 
+.graphics.selected .connector:nth-child(7){
+  transform-origin: center;
+  transform: scaleY(-1);
+}
+.graphics.selected .connector:nth-child(3){
+  transform-origin: center;
+  transform: scaleY(1);
+}
+.selected h2:nth-child(4),.selected h2:nth-child(8){
+  transform: translateX(-100%);
+}
+}
+
 main .connector path{
     fill: var(--text-color);
 }
@@ -88,25 +124,103 @@ main .connector path{
     flex-direction: column;
     justify-content: space-around;
 }
-.side h2{
-    margin: auto;
+main h2{
+  position: absolute;
     padding: 10px;
     width: 20vw;
-    height: 60px;
+    height: max-content;
     font-size: 2em;
     text-align: center;
     border: 2px solid var(--text-color);
     border-radius: 15px;
     font-family: "Cookie";
+    z-index: 1;
+}
+main .graphics{
+  flex-grow: 1;
+}
+main .Content{
+  width: 30%;
+  transform: translateX(100%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: 0.5s;
+}
+.selected+.Content{
+  transform: translateX(0%);
+}
+.Content{
+  padding-top: 50px;
+}
+.Content h1{
+  margin: 60px 0px 30px 0px;
+  font-family: "Cookie";
+  letter-spacing: 0.2em;
+  width: 100px;
+}
+.Content .container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  row-gap: 1em;
+  width: 100px;
+}
+.container label{
+  display: block;
+}
+.container input[type="range"] {
+  -webkit-appearance: none;
+  outline: none;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.container input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--text-color);
+  cursor: pointer;
+  box-shadow: -407px 0 0 400px var(--text-color);;
 }
 
 @media only screen and (max-width: 768px) {
-    .side h2{
+    main h2{
         font-size: 1.2em;
+        width: 80px;
+        height: max-content;
+        margin: auto;
     }
     main .connector{
         position: absolute;
         width: 12vw;
         height: 20vw;
+    }
+    main{
+      flex-direction: column;
+      transition: 0.5s;
+    }
+    main:has(.selected){
+      transform: translateY(-20%);
+    
+    }
+    .selected+.Content{
+      transform: translateY(0%);
+    
+    }
+    main .Content{
+      width: 100%;
+      height: 40vh;
+      position: relative;
+      bottom: -100px;
+      transform: translateY(100%);
+      align-items: center;
+    }
+    .Content .container{
+      row-gap: 0.1em;
+    }
+    .Content h1{
+      margin-bottom: 10px;
     }
 }

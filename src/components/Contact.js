@@ -4,7 +4,7 @@ export default function Contact() {
 const socialMedia=  [  {name : 'Github' , link : 'https://github.com/vignesh14052002' , iconclass : 'fa-github'},
 {name : 'linkedin' , link : 'https://www.linkedin.com/in/vignesh-a-ba83841b0/' , iconclass : 'fa-linkedin'},
 {name : 'twitter' , link : ' https://twitter.com/vignesharivazh2?t=gchEupg5YT5Vbbpo9lPNbg&s=08' , iconclass : 'fa-twitter'},
-{name : 'instagram' , link : 'https://www.instagram.com/_._av.__/' , iconclass : 'fa-instagram'},
+{name : 'instagram' , link : 'https://www.instagram.com/vignesh_arivazhagan_/' , iconclass : 'fa-instagram'},
 {name : 'Reddit' , link : 'https://www.reddit.com/user/vignesh-2002' , iconclass : 'fa-reddit'},
 {name : 'StackOverflow' , link : 'https://stackoverflow.com/users/13218335/vignesh' , iconclass : 'fa-stack-overflow'},
 {name : 'Discord' , link : 'https://discordapp.com/users/1053652408271634432' , iconclass : 'fa-discord'},
@@ -18,7 +18,7 @@ return (
         <div className="row">
         {socialMedia.map((item,index)=>{
             return(
-                <a href={item.link}><i class={"fa-brands "+item.iconclass}></i></a>
+                <a key={index} href={item.link}><i className={"fa-brands "+item.iconclass}></i></a>
             )
         })}
 

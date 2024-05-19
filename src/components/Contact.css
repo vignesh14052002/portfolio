@@ -6,6 +6,11 @@
     align-items: center;
     gap:1em;
 }
+#contact h1{
+    font-family: "Cookie";
+    word-spacing: 0.3em;
+    font-size: 3em;
+}
 .socialmedia{
     width: min(60vw,600px);
     height : 50vh;
@@ -24,4 +29,14 @@
  font-size: 3em;
  color:var(--text-color);
   
+}
+
+@media only screen and (max-width: 768px) {
+  .socialmedia{
+    width:80vw;
+    
+  }
+  .row{
+    gap:4em;
+  }
 }

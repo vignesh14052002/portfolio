@@ -33,13 +33,13 @@ return (
     </div>
     <div id="Project">
         
-        {projectdata.length==0?<div className="Loading"><h1>Loading....</h1></div>:
+        {projectdata.length===0?<div className="Loading"><h1>Loading....</h1></div>:
         projectdata.slice(startat,startat+2).map((obj)=>{
 
             return(
                 <div className="projectContainer">
                     <div className="objectcontainer">
-            <object type="text/html" data={"https://vignesh14052002.github.io/p5js-projects/"+obj.path} ></object>
+            <object aria-label="project" type="text/html" data={"https://vignesh14052002.github.io/p5js-projects/"+obj.path} ></object>
             </div>
             <h3>{obj.title}</h3>
             </div>)
@@ -52,5 +52,3 @@ return (
 </>
 )
 }
-{/* <a href="https://vignesh14052002.github.io/p5js-projects/empty-example/planetandgravity/index.html">Projects</a>
-  */}
