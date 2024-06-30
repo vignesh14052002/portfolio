@@ -33,12 +33,15 @@ function App() {
   
   return (
     <div className="App">
-<HashRouter>     
-      <label className="switch"  >
-      <div ><span></span></div>
-      <input type="checkbox"  />
-      <span className="slider round" onClick={()=>setTheme((pre)=>pre==="dark"?"light":"dark")} ></span>
-</label>
+<HashRouter>
+<div >
+  <input type="checkbox" class="checkbox" id="checkbox"/>
+  <label for="checkbox" class="checkbox-label" onClick={()=>setTheme((pre)=>pre==="dark"?"light":"dark")}>
+    <i class="fas fa-sun"></i>
+    <i class="fas fa-moon"></i>
+    <span class="ball"></span>
+  </label>
+</div>
       <div className="header">
       
       <StyledLink to="/logo" className="logo">

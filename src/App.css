@@ -65,14 +65,50 @@ input:checked + .slider:before {
   transform: translateX(100%);
 }
 
-/* Rounded sliders */
-.slider.round {
-  border-radius: 20px;
+.checkbox {
+  opacity: 0;
+  position: absolute;
 }
 
-.slider.round:before {
-  border-radius: 50%;
+.checkbox-label {
+  margin: 10px;
+  background-color: var(--background-color);
+  border: 1px solid var(--text-color);
+  width: 50px;
+  height: 26px;
+  border-radius: 50px;
+  position: absolute;
+  right: 10px;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.fa-moon {
+  color: var(--text-color);
+}
+
+.fa-sun {
+  color: var(--text-color);
+}
+
+.checkbox-label .ball {
+  background-color: var(--text-color);
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .checkbox-label .ball {
+  transform: translateX(24px);
+}
+
 /* slider end */
 html {
   overflow-x: hidden;
