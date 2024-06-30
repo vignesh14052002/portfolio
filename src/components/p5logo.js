@@ -8,36 +8,39 @@ function sketch(p5) {
     let particles=[]
     let img;
     let sc=3;
-    console.log(img);
+    let bgalpha=255;
+    const particleSplitLevel=0;
     p5.preload = function(){
         img=p5.loadImage(imgtest)
     }
     p5.setup = function() {
         p5.createCanvas(p5.windowWidth, p5.windowHeight);
         
-         let tsc=p5.windowWidth/200;
+         let tsc=p5.windowWidth/img.width;
          if(tsc>sc){
             sc=tsc;
          }
-         console.log(sc);
         img.loadPixels();
     
         for (let i = 0; i < img.width; i++) {
             for (let j = 0; j < img.height; j++) {
                 if(img.pixels[i*4+img.width*4*j]>200){
                     if(p5.windowWidth<p5.windowHeight){
-                        particles.push(new Particle(-10+i*sc,p5.windowHeight/4+j*sc))
-                   
+                        // Mobile
+                        particles.push(new Particle(-10+i*sc,p5.windowHeight/4+j*sc,sc))
                     }
                     else{
-                        particles.push(new Particle(p5.windowWidth/6+i*sc,p5.windowHeight/10+j*sc))
+                        // Desktop
+                        const particle = new Particle(i*sc,j*sc,sc)
+                        particles.push(...particle.split(particleSplitLevel))
+                        
                     }
                 }
             }
         }
+        console.log(particles.length);
         
     }
-let bgalpha=255;
     p5.draw = function() {
         // your draw code here
         if(pageTheme==="light"){
@@ -52,6 +55,7 @@ let bgalpha=255;
     
         for (let i = 0; i < particles.length; i++) {
             const p = particles[i];
+            // if (p.pos.x == p.initpos.x && p.pos.y == p.initpos.y) continue;
             p.update()
             p.show()
             if(p5.dist(p.pos.x,p.pos.y,p5.mouseX,p5.mouseY)<sc*5){
@@ -66,17 +70,15 @@ let bgalpha=255;
             }
         }
     }
-    let gp=p5;
     class Particle {
-        constructor(x,y) {
-        //   this.pos = createVector(random(width), random(height));
-        this.initpos=gp.createVector(x,y)
-        this.pos = gp.createVector(x,y);
-        this.vel = gp.createVector(0,0);
-          this.acc = gp.createVector(0,0);
+        constructor(x,y,size) {
+        this.initpos=p5.createVector(x,y)
+        this.pos = p5.createVector(x,y);
+        this.vel = p5.createVector(0,0);
+          this.acc = p5.createVector(0,0);
           this.maxspeed = 10;
           this.color=0
-          //this.shuffleArray(this.color)
+          this.size = size;
         }
       
         update() {
@@ -93,21 +95,42 @@ let bgalpha=255;
           this.acc.mult(0);
         }
         show(){
-            gp.noStroke()
+            p5.noStroke()
             let pointdist=Math.round(this.initpos.dist(this.pos));
-            let varclr=p5.map(pointdist,0,sc*5,0,255)
-            p5.drawingContext.shadowBlur = this.initpos.dist(this.pos);
+            let varclr=p5.map(pointdist,0,this.size*5,0,255)
             if(pageTheme==="light"){
-
-                p5.drawingContext.shadowColor = p5.color(varclr,0,0);
-                gp.fill(varclr,0,0)
+                // shadow consumes more processing power
+                // p5.drawingContext.shadowColor = p5.color(varclr,0,0);
+                p5.fill(varclr,0,0)
             }
             else{
-                p5.drawingContext.shadowColor = p5.color(varclr,varclr,0);
-                gp.fill(255,255,255-varclr)
+                // p5.drawingContext.shadowColor = p5.color(varclr,varclr,0);
+                p5.fill(255,255,255-varclr)
                 
             }
-            gp.ellipse(this.pos.x,this.pos.y,sc)
+            p5.ellipse(this.pos.x,this.pos.y,this.size)
+        }
+        split(n){
+            if (n === 0) {
+                return [this];
+            }
+            const x = this.pos.x;
+            const y = this.pos.y;
+            const size = this.size/2;
+            const originOffset = size/2;
+
+            const topleft = new Particle(x - originOffset, y - originOffset, size)
+            const topright =  new Particle(x + originOffset, y - originOffset, size)
+            const bottomleft = new Particle(x - originOffset, y + originOffset, size)
+            const bottomright = new Particle(x + originOffset, y + originOffset, size)
+            const splits = [
+                ...topleft.split(n - 1),
+                ...topright.split(n - 1),
+                ...bottomleft.split(n - 1),
+                ...bottomright.split(n - 1)
+            ]
+
+            return splits;
         }
     }  
 }
