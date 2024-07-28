@@ -3,6 +3,7 @@ import {useState} from "react"
 import React from 'react';
 import "./Home.css"
 import Facesvg from './Facesvg'
+import NinjaGame from './NinjaGame/NinjaGame';
 export default function Home() {
     const [selected,setSelected]=useState(null);
     const skills={
@@ -25,6 +26,7 @@ export default function Home() {
   
 return (
     <>
+    {selected && selected==='Game Developer' && <NinjaGame/>}
     <main>
     <div className={selected?'graphics selected':'graphics'}>
     {Object.keys(skills).map((skill)=>(
