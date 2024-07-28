@@ -1,16 +1,17 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.acc4b9c5.css",
-    "main.js": "/portfolio/static/js/main.b6e828f6.js",
+    "main.js": "/portfolio/static/js/main.c88106e7.js",
+    "static/media/ninjagame_spritesheet.png": "/portfolio/static/media/ninjagame_spritesheet.a9d175a23cc63bd60ce8.png",
     "static/media/profile.jpg": "/portfolio/static/media/profile.fcc719588fc737c91236.jpg",
     "static/media/face.svg": "/portfolio/static/media/face.0fa29d0698db16fa55bb218540e35263.svg",
     "static/media/connector.svg": "/portfolio/static/media/connector.d8cc35e8ce6d1f3d62b8a8f59ba8bce3.svg",
     "index.html": "/portfolio/index.html",
     "main.acc4b9c5.css.map": "/portfolio/static/css/main.acc4b9c5.css.map",
-    "main.b6e828f6.js.map": "/portfolio/static/js/main.b6e828f6.js.map"
+    "main.c88106e7.js.map": "/portfolio/static/js/main.c88106e7.js.map"
   },
   "entrypoints": [
     "static/css/main.acc4b9c5.css",
-    "static/js/main.b6e828f6.js"
+    "static/js/main.c88106e7.js"
   ]
 }
