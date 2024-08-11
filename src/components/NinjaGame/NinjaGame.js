@@ -3,20 +3,25 @@ import {spritedata} from './spritedata'
 import imgpath from '../../images/ninjagame_spritesheet.png'
 
 let runaway = false
+let img = new Image()
+img.onload = function(){
+    console.log("image loaded")
+}
+img.src=imgpath
+
 function sketch(canvas){
     
-let ctx,img;
+let ctx;
 
 canvas.width=window.innerWidth
 canvas.height=window.innerHeight;
 ctx=canvas.getContext("2d")
-img=new Image();
-// img.crossOrigin = "anonymous";
-img.onload=()=>{
+
+setTimeout(()=>{
     ctx.drawImage(img,spritedata["slide"].xoff,0,spritedata["slide"].width,500,spritedata["slide"].width/(playerscale*2),0,spritedata["slide"].width/playerscale,500) 
     draw()
-}
-img.src=imgpath
+},10)
+
 
 
 let x=5360+536*0;
@@ -59,6 +64,8 @@ function draw(){
     ctx.save()
     ctx.translate(playerx,playery+current.yoff)
     ctx.scale(flipx,flipy)
+    ctx.shadowBlur = 3;
+    ctx.shadowColor = "white";
     ctx.drawImage(img,x,0,current.width,500,-current.width/(playerscale*2),0,current.width/playerscale,500/3)
     ctx.restore()
     frame++;
@@ -189,7 +196,8 @@ class Weapon{
         // this.rotation += (45 * Math.PI) / 180
 
         ctx.rotate(this.rotation)
-
+        ctx.shadowBlur = 3;
+        ctx.shadowColor = "white";
         ctx.drawImage(img,current.xoff,0,current.width,500,-current.width/(playerscale*2) + 500/6,-25,current.width/playerscale,500/3)
         ctx.restore()
     }
